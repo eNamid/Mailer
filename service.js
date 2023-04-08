@@ -10,19 +10,30 @@ const { mailer } = require('./src/nodemailer');
     const users = {};
 
     for (let emails of users_email) {
-        users[emails.email] = emails.email;
+        users[emails.email] = emails.username;
     }
 
-    const email = Object.values(users);
+    const email = Object.keys(users);
+    const username = Object.values(users);
 
-    console.log(email);
+    for (let i = 0; i < email.length; i++) {
 
-    const message = {
-        to: email,
-        text: 'Hi, my name is Dima and it my auto sendler of mail a mail'
+        const message = {
+            to: email[i],
+            subject: 'Mailer Test',
+            attachments: [{
+                filename: 'pig.jpg',
+                path: __dirname + '/image/pig.jpg',
+                cid: 'pig'
+            }],
+            text: `Hi, my name is Dima and it my auto sendler of mail a mail.
+
+            
+Thank u ${username[i]}`
+        }
+
+        mailer(message);
+        console.log('Successful!')
     }
-
-    mailer(message);
-
     // process.exit()
 })()    
