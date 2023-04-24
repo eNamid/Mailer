@@ -22,9 +22,9 @@ const { mailer } = require('./src/nodemailer');
             to: email[i],
             subject: 'Mailer Test',
             attachments: [{
-                filename: 'pig.jpg',
-                path: __dirname + '/image/pig.jpg',
-                cid: 'pig'
+                filename: 'city.jpg',
+                path: __dirname + '/image/city.jpg',
+                cid: 'city'
             }],
             text: `Hi, my name is Dima and it my auto sendler of mail a mail.
 
@@ -35,5 +35,4 @@ Thank u ${username[i]}`
         mailer(message);
         console.log('Successful!')
     }
-    // process.exit()
 })()    

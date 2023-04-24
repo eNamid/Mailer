@@ -2,6 +2,7 @@ const mysql = require('mysql2');
 
 const getMysql = () => new Promise((resolve, reject) => {
     const conn = {};
+    
     const _conn = mysql.createConnection({
         host: process.env.MYSQL_HOST,
         user: process.env.MYSQL_USER,
